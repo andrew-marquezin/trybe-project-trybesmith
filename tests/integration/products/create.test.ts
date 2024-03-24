@@ -33,7 +33,6 @@ describe('POST /products', function () {
     expect(response.status).to.equal(400);
     expect(response.body).to.be.deep.equal({ message: '"UserId" is required' });
   });
-  // it('ao receber um userId inexistente, retorne um erro', async function () {});
   it('ao receber um body válido, retorne o produto criado', async function () {
     const requestBody = productsMock.validRequest;
     const mockCreateReturn = ProductModel.build(requestBody);

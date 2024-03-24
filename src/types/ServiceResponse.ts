@@ -12,3 +12,13 @@ export type ServiceResponseSuccess<T> = {
 };
 
 export type ServiceResponse<T> = ServiceResponseError | ServiceResponseSuccess<T>;
+
+type Data = {
+  username: string,
+  productIds?: number[],
+};
+
+export type UserResponse = {
+  status: string,
+  data: Data[],
+};
