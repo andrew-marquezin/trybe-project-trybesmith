@@ -16,10 +16,6 @@ async function create(req: Request, res: Response) {
 async function list(_req: Request, res: Response) {
   const serviceResponse = await productService.list();
 
-  if (serviceResponse.status !== 'SUCCESSFUL') {
-    return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
-  }
-
   res.status(200).json(serviceResponse.data);
 }
 

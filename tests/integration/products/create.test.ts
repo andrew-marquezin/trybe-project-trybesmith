@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 describe('POST /products', function () { 
   beforeEach(function () { sinon.restore(); });
-  it('Ao não receber um name, retorne um erro', async function (){
+  it('Ao não receber um name, retorne um erro', async function () {
     const requestBody = productsMock.noNameRequest;
 
     const response = await chai.request(app).post('/products').send(requestBody);
@@ -17,6 +17,7 @@ describe('POST /products', function () {
     expect(response.status).to.equal(400);
     expect(response.body).to.be.deep.equal({ message: '"Name" is required' });
   });
+
   it('ao não receber um price, retorne um erro', async function () {
     const requestBody = productsMock.noPriceRequest;
 
@@ -25,6 +26,7 @@ describe('POST /products', function () {
     expect(response.status).to.equal(400);
     expect(response.body).to.be.deep.equal({ message: '"Price" is required' });
   });
+
   it('ao não receber um userId, retorne um erro', async function () {
     const requestBody = productsMock.noUserIdRequest;
 
@@ -33,6 +35,7 @@ describe('POST /products', function () {
     expect(response.status).to.equal(400);
     expect(response.body).to.be.deep.equal({ message: '"UserId" is required' });
   });
+  
   it('ao receber um body válido, retorne o produto criado', async function () {
     const requestBody = productsMock.validRequest;
     const mockCreateReturn = ProductModel.build(requestBody);
